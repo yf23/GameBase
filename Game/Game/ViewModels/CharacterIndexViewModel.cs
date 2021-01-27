@@ -130,5 +130,35 @@ namespace Game.ViewModels
         }
 
         #endregion SortDataSet
+
+        /// <summary>
+        /// Returns the item passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public override CharacterModel CheckIfExists(CharacterModel data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+
+            // This will walk the items and find if there is one that is the same.
+            // If so, it returns the item...
+
+            var myList = Dataset.Where(a =>
+                                        a.Name == data.Name &&
+                                        a.Description == data.Description
+                                        )
+                                        .FirstOrDefault();
+
+            if (myList == null)
+            {
+                // it's not a match, return false;
+                return null;
+            }
+
+            return myList;
+        }
     }
 }
