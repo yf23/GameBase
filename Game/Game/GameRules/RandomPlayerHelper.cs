@@ -212,6 +212,7 @@ namespace Game.GameRules
                 // Randomize Name
                 Name = GetCharacterName(),
                 Description = GetCharacterDescription(),
+                Job = GetCharacterJob(),
 
                 // Randomize the Attributes
                 Attack = GetAbilityValue(),
