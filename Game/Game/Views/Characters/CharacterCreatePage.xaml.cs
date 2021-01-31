@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 
 using Game.Models;
 using Game.ViewModels;
+using Game.GameRules;
 
 namespace Game.Views
 {
@@ -32,13 +33,9 @@ namespace Game.Views
         public CharacterCreatePage()
         {
             InitializeComponent();
-
-            this.ViewModel.Data = new CharacterModel
-            {
-                Level = 1
-            };
-
             this.ViewModel.Title = "Character Create";
+
+            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
 
             BindingContext = ViewModel;
         }
