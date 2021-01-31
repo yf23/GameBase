@@ -308,6 +308,7 @@
             <Style TargetType="StackLayout"
                 x:Key="OuterBoxStack"
                 BasedOn="{StaticResource VerticalStack}">
+                <Setter Property="Spacing" Value="10" />
             </Style>
 
             <Style TargetType="StackLayout"
