@@ -163,12 +163,18 @@
     <BundleResource Include="Resources\icon_delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\icon_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\icon_new.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\mapcell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_update.png" />
   </ItemGroup>
 </Project>
