@@ -78,6 +78,23 @@ namespace Game.GameRules
         }
 
         /// <summary>
+        /// Randomly set the Character Job
+        /// </summary>
+        /// <returns></returns>
+        public static CharacterJobEnum GetCharacterJob()
+        {
+            var result = CharacterJobEnum.Fighter;
+
+            // If it is a 2 then cleric...
+            if (DiceHelper.RollDice(1, 2) > 1)
+            {
+                result = CharacterJobEnum.Cleric;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Get Name
         /// 
         /// Return a Random Name
