@@ -66,5 +66,16 @@ namespace Game.Views
         {
             await Navigation.PopModalAsync();
         }
+
+        /// <summary>
+        /// Randomize Character Values and Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RandomButton_Clicked(object sender, EventArgs e)
+        {
+            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
+            return;
+        }
     }
 }
