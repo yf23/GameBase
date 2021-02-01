@@ -69,6 +69,10 @@ namespace Game.Views
         public void RandomButton_Clicked(object sender, EventArgs e)
         {
             this.ViewModel.Data.Update(RandomPlayerHelper.GetRandomCharacter(20));
+
+            BindingContext = null;
+            BindingContext = this.ViewModel;
+
             return;
         }
     }
