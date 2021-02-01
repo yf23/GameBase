@@ -33,7 +33,6 @@ namespace Game.Views
             InitializeComponent();
 
             this.ViewModel = data;
-            this.ViewModel.Title = "Character Update " + data.Title;
 
             LoadLevelPickerValues();
 
@@ -52,6 +51,8 @@ namespace Game.Views
             // Clear the Binding and reset it
             BindingContext = null;
             this.ViewModel.Data = data;
+            this.ViewModel.Title = data.Name;
+
             BindingContext = this.ViewModel;
 
             // This resets the Picker to the Character's level
