@@ -156,8 +156,6 @@ namespace Game.Views
         {
             // Show the Result
             MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
-
-            CurrentLevelValue.Text = ViewModel.Data.Level.ToString();
         }
     }
 }
