@@ -33,9 +33,9 @@ namespace Game.Views
         public CharacterCreatePage()
         {
             InitializeComponent();
-            this.ViewModel.Title = "Character Create";
 
             this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
+            this.ViewModel.Title = this.ViewModel.Data.Name;
 
             BindingContext = ViewModel;
         }
@@ -74,7 +74,13 @@ namespace Game.Views
         /// <param name="e"></param>
         public void RandomButton_Clicked(object sender, EventArgs e)
         {
+            BindingContext = null;
+
             this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
+            this.ViewModel.Title = this.ViewModel.Data.Name;
+
+            BindingContext = ViewModel;
+
             return;
         }
     }
