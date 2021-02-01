@@ -254,9 +254,11 @@ namespace Game.GameRules
         /// <returns></returns>
         public static MonsterModel GetRandomMonster(int MaxLevel, bool Items= false)
         {
+            var TargetLevel = DiceHelper.RollDice(1, MaxLevel);
+
             var result = new MonsterModel()
             {
-                Level = DiceHelper.RollDice(1, MaxLevel),
+                Level = 0,
 
                 // Randomize Name
                 Name = GetMonsterName(),
@@ -279,23 +281,25 @@ namespace Game.GameRules
             result.Level = result.Difficulty.ToModifier(result.Level);
 
             // Get the new Max Health
-            result.MaxHealth = DiceHelper.RollDice(result.Level, 10);
-
-            // Adjust the health, If the new Max Health is above the rule for the level, use the original
-            var MaxHealthAdjusted = result.Difficulty.ToModifier(result.MaxHealth);
-            if (MaxHealthAdjusted < result.Level * 10)
-            {
-                result.MaxHealth = MaxHealthAdjusted;
-            }
+            result.MaxHealth = 0;
+            result.CurrentHealth = 0;
 
             // Level up to the new level
-            result.LevelUpToValue(result.Level);
+            result.LevelUpToValue(TargetLevel);
 
-            // Set ExperienceRemaining so Monsters can both use this method
-            result.ExperienceRemaining = LevelTableHelper.LevelDetailsList[result.Level + 1].Experience;
+            // Adjust the health, If the new Max Health is above the rule for the level, set it to max
+            var MaxHealthRule = result.Level * 10;
+            var MaxHealthAdjusted = result.Difficulty.ToModifier(result.MaxHealth);
+            if (MaxHealthAdjusted  > MaxHealthRule)
+            {
+                result.MaxHealth = MaxHealthRule;
+            }
 
             // Enter Battle at full health
             result.CurrentHealth = result.MaxHealth;
+
+            // Set ExperienceRemaining so Monsters can both use this method
+            result.ExperienceRemaining = LevelTableHelper.LevelDetailsList[result.Level + 1].Experience;
 
             // Monsters can have weapons too....
             if (Items)
