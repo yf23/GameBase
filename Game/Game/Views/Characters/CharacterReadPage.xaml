@@ -167,6 +167,14 @@
 
             </StackLayout>
 
+            <FlexLayout 
+                        Padding="5"
+                        Wrap="Wrap"
+                        JustifyContent="SpaceAround"
+                        AlignContent="SpaceAround"
+                        x:Name="ItemBox">
+            </FlexLayout>
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>
