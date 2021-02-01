@@ -32,7 +32,45 @@ namespace Game.Views
             this.ViewModel = data;
             this.ViewModel.Title = "Character Update " + data.Title;
 
+            LoadLevelPickerValues();
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// Load the values for the Level Picker
+        /// </summary>
+        /// <returns></returns>
+        public bool LoadLevelPickerValues()
+        {
+            // Load the values for the Level into the Picker
+            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
+            {
+                LevelPicker.Items.Add(i.ToString());
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Redo the Binding to cause a refresh
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdatePageBindingContext()
+        {
+            // Temp store off the Level
+            var level = this.ViewModel.Data.Level;
+
+            // Clear the Binding and reset it
+            BindingContext = null;
             BindingContext = this.ViewModel;
+
+            // This resets the Picker to -1 index, need to reset it back
+            ViewModel.Data.Level = level;
+            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+
+            ManageHealth();
+
+            return true;
         }
 
         /// <summary>
@@ -71,10 +109,35 @@ namespace Game.Views
         {
             this.ViewModel.Data.Update(RandomPlayerHelper.GetRandomCharacter(20));
 
-            BindingContext = null;
-            BindingContext = this.ViewModel;
+            UpdatePageBindingContext();
 
             return;
+        }
+
+        /// <summary>
+        /// The Level selected from the list
+        /// Need to recalculate Max Health
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void LevelPicker_Changed(object sender, EventArgs args)
+        {
+            // Change the Level
+            ViewModel.Data.Level = LevelPicker.SelectedIndex + 1;
+
+            ManageHealth();
+        }
+
+        /// <summary>
+        /// Change the Level Picker
+        /// </summary>
+        public void ManageHealth()
+        {
+            // Roll for new HP
+            ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
+
+            // Show the Result
+            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
         }
     }
 }

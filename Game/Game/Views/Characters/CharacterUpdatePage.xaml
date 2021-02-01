@@ -77,10 +77,10 @@
                                 Text="Level" 
                                 Style="{StaticResource LabelStyle}"/>
 
-                    <!--<Picker Grid.Row="4" Grid.Column="1"
+                    <Picker Grid.Row="4" Grid.Column="1"
                                 x:Name="LevelPicker"
                                 SelectedItem="{Binding SelectedItemProperty}" 
-                                SelectedIndexChanged="LevelPicker_Changed"/>-->
+                                SelectedIndexChanged="LevelPicker_Changed"/>
 
                     <Label Grid.Row="5" Grid.Column="0"
                                 Text="Max Health" 
