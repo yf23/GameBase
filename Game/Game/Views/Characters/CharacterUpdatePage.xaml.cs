@@ -23,7 +23,7 @@ namespace Game.Views
         public readonly GenericViewModel<CharacterModel> ViewModel;
 
         // Empty Constructor for Tests
-        public CharacterUpdatePage(bool UnitTest){ }
+        public CharacterUpdatePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -38,23 +38,6 @@ namespace Game.Views
             LoadLevelPickerValues();
 
             UpdatePageBindingContext();
-        }
-
-        /// <summary>
-        /// Load the values for the Level Picker
-        /// </summary>
-        /// <returns></returns>
-        public bool LoadLevelPickerValues()
-        {
-            // Load the values for the Level into the Picker
-            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
-            {
-                LevelPicker.Items.Add(i.ToString());
-            }
-
-            LevelPicker.SelectedIndex = - 1;
-
-            return true;
         }
 
         /// <summary>
@@ -118,6 +101,24 @@ namespace Game.Views
             return;
         }
 
+        #region Picker
+        /// <summary>
+        /// Load the values for the Level Picker
+        /// </summary>
+        /// <returns></returns>
+        public bool LoadLevelPickerValues()
+        {
+            // Load the values for the Level into the Picker
+            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
+            {
+                LevelPicker.Items.Add(i.ToString());
+            }
+
+            LevelPicker.SelectedIndex = -1;
+
+            return true;
+        }
+
         /// <summary>
         /// The Level selected from the list
         /// Need to recalculate Max Health
@@ -126,12 +127,11 @@ namespace Game.Views
         /// <param name="args"></param>
         public void LevelPicker_Changed(object sender, EventArgs args)
         {
-
             // If the Picker is not set, then set it
             if (LevelPicker.SelectedIndex == -1)
             {
                 LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
-                return; 
+                return;
             }
 
             var result = LevelPicker.SelectedIndex + 1;
@@ -157,5 +157,6 @@ namespace Game.Views
             // Show the Result
             MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
         }
+        #endregion Picker
     }
 }
