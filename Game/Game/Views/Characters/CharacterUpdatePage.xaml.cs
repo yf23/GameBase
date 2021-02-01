@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using Game.ViewModels;
 using Game.Models;
+using Game.GameRules;
 
 namespace Game.Views
 {
@@ -58,6 +59,17 @@ namespace Game.Views
         public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        /// <summary>
+        /// Randomize Character Values and Items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RandomButton_Clicked(object sender, EventArgs e)
+        {
+            this.ViewModel.Data.Update(RandomPlayerHelper.GetRandomCharacter(20));
+            return;
         }
     }
 }
