@@ -31,7 +31,10 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            BindingContext = this.ViewModel = data;
+            this.ViewModel = data;
+            this.ViewModel.Title = data.Data.Name;
+
+            BindingContext = this.ViewModel;
         }
 
         /// <summary>
