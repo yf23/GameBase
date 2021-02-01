@@ -28,7 +28,7 @@ namespace Game.Views
 
             BindingContext = this.viewModel = data;
 
-            this.viewModel.Title = "Character Delete " + data.Title;
+            this.viewModel.Title = data.Title;
         }
 
         /// <summary>

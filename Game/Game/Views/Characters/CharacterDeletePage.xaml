@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Game.Views.CharacterDeletePage"
-             Title="Character Delete">
+             Title="{Binding Title}">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
@@ -40,19 +40,15 @@
 
 
             <StackLayout 
-            HorizontalOptions="Center" 
-            Padding="20">
+                HorizontalOptions="Center" 
+                Padding="20">
 
                 <Label Text="Really delete this?" Style="{StaticResource MessageStyle}"/>
 
                 <Button 
-                Text="Yes" 
-                Clicked="Delete_Clicked" 
-                HorizontalOptions="Center"
-                FontSize="Medium"
-                BorderWidth="1" 
-                BorderColor="black">
-                </Button>
+                    Text="Yes" 
+                    Clicked="Delete_Clicked"/>
+
             </StackLayout>
             
         </StackLayout>
