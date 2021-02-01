@@ -91,6 +91,11 @@
                                 Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
                                 Style="{StaticResource ValueStyle}"/>
 
+                    <Label Grid.Row="5" Grid.Column="2"
+                                x:Name="CurrentLevelValue"
+                                Text="{Binding Data.Level, StringFormat= '{0:G} hp'}" 
+                                Style="{StaticResource ValueStyle}"/>
+
                 </Grid>
 
                 <Button 
