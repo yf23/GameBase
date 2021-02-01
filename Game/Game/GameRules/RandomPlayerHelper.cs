@@ -205,9 +205,12 @@ namespace Game.GameRules
         /// <returns></returns>
         public static CharacterModel GetRandomCharacter(int MaxLevel)
         {
+            var TargetLevel = DiceHelper.RollDice(1, MaxLevel);
+
             var result = new CharacterModel()
             {
-                Level = DiceHelper.RollDice(1, MaxLevel),
+                // Start level at 0, so level up happens
+                Level = 0,  
 
                 // Randomize Name
                 Name = GetCharacterName(),
@@ -231,10 +234,12 @@ namespace Game.GameRules
                 ImageURI = GetCharacterImage()
             };
 
-            result.MaxHealth = DiceHelper.RollDice(MaxLevel, 10);
+            // Set current and max to 0, then roll up to the level to get the actual value.
+            result.CurrentHealth = 0;
+            result.MaxHealth = 0;  
 
             // Level up to the new level
-            result.LevelUpToValue(result.Level);
+            result.LevelUpToValue(TargetLevel);
 
             // Enter Battle at full health
             result.CurrentHealth = result.MaxHealth;
