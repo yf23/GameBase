@@ -158,5 +158,164 @@ namespace Game.Views
             MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
         }
         #endregion Picker
+
+        #region AttributeButtons
+        #region SetEnableStateAttributeButtons
+        /// <summary>
+        /// Walk each button and set the enabled to true or false
+        /// </summary>
+        /// <returns></returns>
+        public bool SetEnableStateAttributeButtons()
+        {
+            AttackUpButton.IsEnabled = true;
+            if (ViewModel.Data.Attack == MaxAttributeValue)
+            {
+                AttackUpButton.IsEnabled = false;
+            }
+
+            AttackDownButton.IsEnabled = true;
+            if (ViewModel.Data.Attack == MinAttributeValue)
+            {
+                AttackDownButton.IsEnabled = false;
+            }
+
+            DefenseUpButton.IsEnabled = true;
+            if (ViewModel.Data.Defense == MaxAttributeValue)
+            {
+                DefenseUpButton.IsEnabled = false;
+            }
+
+            DefenseDownButton.IsEnabled = true;
+            if (ViewModel.Data.Defense == MinAttributeValue)
+            {
+                DefenseDownButton.IsEnabled = false;
+            }
+
+            SpeedUpButton.IsEnabled = true;
+            if (ViewModel.Data.Speed == MaxAttributeValue)
+            {
+                SpeedUpButton.IsEnabled = false;
+            }
+
+            SpeedDownButton.IsEnabled = true;
+            if (ViewModel.Data.Speed == MinAttributeValue)
+            {
+                SpeedDownButton.IsEnabled = false;
+            }
+
+            return true;
+        }
+
+        #endregion SetEnableStateAttributeButtons
+
+        #region AttackButton
+        /// <summary>
+        /// Manage the Attack Up Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void AttackUpButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Attack++;
+
+            if (ViewModel.Data.Attack > MaxAttributeValue)
+            {
+                ViewModel.Data.Attack = MaxAttributeValue;
+            }
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// Manage the Attack Down Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void AttackDownButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Attack--;
+
+            if (ViewModel.Data.Attack > MinAttributeValue)
+            {
+                ViewModel.Data.Attack = MinAttributeValue;
+            }
+
+            UpdatePageBindingContext();
+        }
+        #endregion AttackButton
+
+        #region DefenseButton
+        /// <summary>
+        /// Manage the Defense Up Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void DefenseUpButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Defense++;
+
+            if (ViewModel.Data.Defense > MaxAttributeValue)
+            {
+                ViewModel.Data.Defense = MaxAttributeValue;
+            }
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// Manage the Defense Down Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void DefenseDownButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Defense--;
+
+            if (ViewModel.Data.Defense > MinAttributeValue)
+            {
+                ViewModel.Data.Defense = MinAttributeValue;
+                DefenseUpButton.IsEnabled = false;
+            }
+
+            UpdatePageBindingContext();
+        }
+        #endregion DefenseButton
+
+        #region SpeedButton
+        /// <summary>
+        /// Manage the Speed Up Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void SpeedUpButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Speed++;
+
+            if (ViewModel.Data.Speed > MaxAttributeValue)
+            {
+                ViewModel.Data.Speed = MaxAttributeValue;
+            }
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// Manage the Speed Down Button Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void SpeedDownButton_Clicked(object sender, EventArgs e)
+        {
+            ViewModel.Data.Speed--;
+
+            if (ViewModel.Data.Speed > MinAttributeValue)
+            {
+                ViewModel.Data.Speed = MinAttributeValue;
+            }
+
+            UpdatePageBindingContext();
+        }
+        #endregion SpeedButton
+        #endregion AttributeButtons
     }
 }

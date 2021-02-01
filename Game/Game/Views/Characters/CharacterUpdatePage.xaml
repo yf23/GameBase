@@ -93,6 +93,84 @@
 
                 </Grid>
 
+                <Grid
+                    RowSpacing="1"
+                    ColumnSpacing="5"
+                    VerticalOptions="Center"
+                    RowDefinitions="auto,auto,auto,auto"
+                    ColumnDefinitions="auto,auto,auto,auto,auto"
+                    >
+
+                    <!--Attack-->
+                    <Label 
+                        Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Attack"/>
+
+                    <Label 
+                        Grid.Row="0" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Attack}"/>
+
+                    <Button
+                        Grid.Row="0" Grid.Column="3"
+                        x:Name="AttackDownButton"
+                        Text="-"
+                        Clicked="AttackDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="0" Grid.Column="4"
+                        x:Name="AttackUpButton"
+                        Text="+"
+                        Clicked="AttackUpButton_Clicked"/>
+
+                    <!--Defense-->
+                    <Label 
+                        Grid.Row="1" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Defense"/>
+
+                    <Label 
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Defense}"/>
+
+                    <Button
+                        Grid.Row="1" Grid.Column="3"
+                        x:Name="DefenseDownButton"
+                        Text="-"
+                        Clicked="DefenseDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="1" Grid.Column="4"
+                        x:Name="DefenseUpButton"
+                        Text="+"
+                        Clicked="DefenseUpButton_Clicked"/>
+
+                    <!--Speed-->
+                    <Label 
+                        Grid.Row="2" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Speed"/>
+
+                    <Label 
+                        Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Speed}"/>
+
+                    <Button
+                        Grid.Row="2" Grid.Column="3"
+                        x:Name="SpeedDownButton"
+                        Text="-"
+                        Clicked="SpeedDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="2" Grid.Column="4"
+                        x:Name="SpeedUpButton"
+                        Text="+"
+                        Clicked="SpeedUpButton_Clicked"/>
+                </Grid>
+
                 <Button 
                         x:Name="Randomize"
                         Text="Random"
