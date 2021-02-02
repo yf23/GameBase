@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="using:Game.Models"
              xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local_enum="clr-namespace:Game.Models"
              x:Class="Game.Views.CharacterUpdatePage"
              Title="{Binding Title}">
 
@@ -57,9 +59,11 @@
                                 Text="Job" 
                                 Style="{StaticResource LabelStyle}"/>
 
-                    <Label Grid.Row="2" Grid.Column="1"
-                                Text="{Binding Data.Job}" 
-                                Style="{StaticResource ValueStyle}"/>
+                    <Picker Grid.Row="2" Grid.Column="1"
+                                x:Name="JobPicker"
+                                ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetJobList}" 
+                                SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                                />
 
                     <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
 

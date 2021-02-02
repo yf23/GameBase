@@ -58,6 +58,8 @@ namespace Game.Views
             // This resets the Picker to the Character's level
             LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
+            JobPicker.SelectedItem = ViewModel.Data.Job.ToString();
+            
             SetEnableStateAttributeButtons();
 
             return true;
