@@ -226,7 +226,6 @@ namespace Game.Views
             if (ViewModel.Data.Attack > MaxAttributeValue)
             {
                 ViewModel.Data.Attack = MaxAttributeValue;
-                AttackUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -244,7 +243,6 @@ namespace Game.Views
             if (ViewModel.Data.Attack < MinAttributeValue)
             {
                 ViewModel.Data.Attack = MinAttributeValue;
-                AttackDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -264,7 +262,6 @@ namespace Game.Views
             if (ViewModel.Data.Defense > MaxAttributeValue)
             {
                 ViewModel.Data.Defense = MaxAttributeValue;
-                DefenseUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -282,7 +279,6 @@ namespace Game.Views
             if (ViewModel.Data.Defense < MinAttributeValue)
             {
                 ViewModel.Data.Defense = MinAttributeValue;
-                DefenseDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -302,7 +298,6 @@ namespace Game.Views
             if (ViewModel.Data.Speed > MaxAttributeValue)
             {
                 ViewModel.Data.Speed = MaxAttributeValue;
-                SpeedUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -320,7 +315,6 @@ namespace Game.Views
             if (ViewModel.Data.Speed < MinAttributeValue)
             {
                 ViewModel.Data.Speed = MinAttributeValue;
-                SpeedDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
