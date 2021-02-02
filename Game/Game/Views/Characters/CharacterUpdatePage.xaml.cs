@@ -58,6 +58,8 @@ namespace Game.Views
             // This resets the Picker to the Character's level
             LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
+            SetEnableStateAttributeButtons();
+
             return true;
         }
 
@@ -222,6 +224,7 @@ namespace Game.Views
             if (ViewModel.Data.Attack > MaxAttributeValue)
             {
                 ViewModel.Data.Attack = MaxAttributeValue;
+                AttackUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -236,9 +239,10 @@ namespace Game.Views
         {
             ViewModel.Data.Attack--;
 
-            if (ViewModel.Data.Attack > MinAttributeValue)
+            if (ViewModel.Data.Attack < MinAttributeValue)
             {
                 ViewModel.Data.Attack = MinAttributeValue;
+                AttackDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -258,6 +262,7 @@ namespace Game.Views
             if (ViewModel.Data.Defense > MaxAttributeValue)
             {
                 ViewModel.Data.Defense = MaxAttributeValue;
+                DefenseUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -272,10 +277,10 @@ namespace Game.Views
         {
             ViewModel.Data.Defense--;
 
-            if (ViewModel.Data.Defense > MinAttributeValue)
+            if (ViewModel.Data.Defense < MinAttributeValue)
             {
                 ViewModel.Data.Defense = MinAttributeValue;
-                DefenseUpButton.IsEnabled = false;
+                DefenseDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -295,6 +300,7 @@ namespace Game.Views
             if (ViewModel.Data.Speed > MaxAttributeValue)
             {
                 ViewModel.Data.Speed = MaxAttributeValue;
+                SpeedUpButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
@@ -309,9 +315,10 @@ namespace Game.Views
         {
             ViewModel.Data.Speed--;
 
-            if (ViewModel.Data.Speed > MinAttributeValue)
+            if (ViewModel.Data.Speed < MinAttributeValue)
             {
                 ViewModel.Data.Speed = MinAttributeValue;
+                SpeedDownButton.IsEnabled = false;
             }
 
             UpdatePageBindingContext();
