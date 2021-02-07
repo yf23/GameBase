@@ -20,7 +20,7 @@ namespace Game.Views
         public int MinAttributeValue = 0;
 
         // View Model for Item
-        public readonly GenericViewModel<CharacterModel> ViewModel;
+        public readonly GenericViewModel<MonsterModel> ViewModel;
 
         // Empty Constructor for Tests
         public MonsterUpdatePage(bool UnitTest) { }
@@ -28,7 +28,7 @@ namespace Game.Views
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
-        public MonsterUpdatePage(GenericViewModel<CharacterModel> data)
+        public MonsterUpdatePage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
 
@@ -99,7 +99,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void RandomButton_Clicked(object sender, EventArgs e)
         {
-            this.ViewModel.Data.Update(RandomPlayerHelper.GetRandomCharacter(20));
+            this.ViewModel.Data.Update(RandomPlayerHelper.GetRandomMonster(1));
 
             UpdatePageBindingContext();
 

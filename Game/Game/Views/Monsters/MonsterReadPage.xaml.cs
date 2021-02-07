@@ -18,7 +18,7 @@ namespace Game.Views
     public partial class MonsterReadPage : ContentPage
     {
         // View Model for Item
-        public readonly GenericViewModel<CharacterModel> ViewModel;
+        public readonly GenericViewModel<MonsterModel> ViewModel;
 
         // Empty Constructor for UTs
         public MonsterReadPage(bool UnitTest) { }
@@ -29,7 +29,7 @@ namespace Game.Views
         /// The viewModel is the data that should be displayed
         /// </summary>
         /// <param name="viewModel"></param>
-        public MonsterReadPage(GenericViewModel<CharacterModel> data)
+        public MonsterReadPage(GenericViewModel<MonsterModel> data)
         {
             InitializeComponent();
 
