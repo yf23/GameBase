@@ -324,8 +324,8 @@
             <Style TargetType="StackLayout"
                 x:Key="ItemImageBox"
                 BasedOn="{StaticResource CardImageTextBox}">
-                <Setter Property="HeightRequest" Value="60" />
-                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
                 <Setter Property="Spacing" Value="1" />
             </Style>
 
