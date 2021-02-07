@@ -59,6 +59,33 @@
                                 Style="{StaticResource ValueStyle}"/>
                         </StackLayout>
 
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label 
+                                Text="Attack : " 
+                                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                                Text="{Binding Data.Attack}" 
+                                Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label 
+                                Text="Defense : " 
+                                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                                Text="{Binding Data.Defense}" 
+                                Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource HorizontalStack}">
+                            <Label 
+                                Text="Speed : " 
+                                Style="{StaticResource LabelStyle}"/>
+                            <Label 
+                                Text="{Binding Data.Speed}" 
+                                Style="{StaticResource ValueStyle}"/>
+                        </StackLayout>
+
                     </StackLayout>
 
                     <FlexLayout 
