@@ -89,6 +89,9 @@
                     </StackLayout>
 
                     <FlexLayout 
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        Margin="5"
                         Padding="5"
                         Wrap="Wrap"
                         JustifyContent="SpaceAround"
