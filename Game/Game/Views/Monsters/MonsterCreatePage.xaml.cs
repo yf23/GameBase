@@ -19,7 +19,7 @@ namespace Game.Views
     public partial class MonsterCreatePage : ContentPage
     {
         // The Character to create
-        public GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
+        public GenericViewModel<MonsterModel> ViewModel = new GenericViewModel<MonsterModel>();
 
         // Hold the current location selected
         public ItemLocationEnum PopupLocationEnum = ItemLocationEnum.Unknown;
@@ -34,7 +34,7 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
+            this.ViewModel.Data = RandomPlayerHelper.GetRandomMonster(1);
             this.ViewModel.Title = this.ViewModel.Data.Name;
 
             BindingContext = ViewModel;
@@ -50,7 +50,7 @@ namespace Game.Views
             // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
             {
-                ViewModel.Data.ImageURI = new CharacterModel().ImageURI;
+                ViewModel.Data.ImageURI = new MonsterModel().ImageURI;
             }
 
             MessagingCenter.Send(this, "Create", ViewModel.Data);
@@ -76,7 +76,7 @@ namespace Game.Views
         {
             BindingContext = null;
 
-            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
+            this.ViewModel.Data = RandomPlayerHelper.GetRandomMonster(1);
             this.ViewModel.Title = this.ViewModel.Data.Name;
 
             BindingContext = ViewModel;
