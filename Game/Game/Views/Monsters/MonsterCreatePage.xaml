@@ -47,11 +47,11 @@
                                 Style="{StaticResource EntryStyle}"/>
 
                     <Label Grid.Row="2" Grid.Column="0"
-                                Text="Job" 
+                                Text="Difficulty" 
                                 Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Row="2" Grid.Column="1"
-                                Text="{Binding Data.Job}" 
+                                Text="{Binding Data.Difficulty}" 
                                 Style="{StaticResource ValueStyle}"/>
 
                 </Grid>
