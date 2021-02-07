@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="using:Game.Models"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local_enum="clr-namespace:Game.Models"
+             x:Class="Game.Views.MonsterUpdatePage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}">
+
+                <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
+
+                <Grid
+                            RowSpacing="1"
+                            ColumnSpacing="2"
+                            VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                                Text="Name" 
+                                Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Grid.Row="0" Grid.Column="1"
+                                Text="{Binding Data.Name, Mode=TwoWay}" 
+                                Style="{StaticResource EntryStyle}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                                Text="Description" 
+                                Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Grid.Row="1" Grid.Column="1"
+                                Text="{Binding Data.Description, Mode=TwoWay}" 
+                                Style="{StaticResource EntryStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                                Text="Job" 
+                                Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="2" Grid.Column="1"
+                                x:Name="JobPicker"
+                                ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetJobList}" 
+                                SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                                />
+
+                    <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
+
+                        <Image 
+                                    Source="{Binding Data.ImageURI, Mode=TwoWay}"
+                                    Style="{StaticResource ImageSmallStyle}"/>
+
+                        <Entry 
+                                    Text="{Binding Data.ImageURI, Mode=TwoWay}" 
+                                    Style="{StaticResource EntryStyle}"/>
+
+                    </StackLayout>
+
+                    <Label Grid.Row="4" Grid.Column="0"
+                                Text="Level" 
+                                Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="4" Grid.Column="1"
+                                x:Name="LevelPicker"
+                                SelectedItem="{Binding SelectedItemProperty}" 
+                                SelectedIndexChanged="LevelPicker_Changed"/>
+
+                    <Label Grid.Row="5" Grid.Column="0"
+                                Text="Max Health" 
+                                Style="{StaticResource LabelStyle}"/>
+
+                    <Label Grid.Row="5" Grid.Column="1"
+                                x:Name="MaxHealthValue"
+                                Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
+                                Style="{StaticResource ValueStyle}"/>
+
+                </Grid>
+
+                <Grid
+                    RowSpacing="1"
+                    ColumnSpacing="5"
+                    VerticalOptions="Center"
+                    RowDefinitions="auto,auto,auto,auto"
+                    ColumnDefinitions="auto,auto,auto,auto,auto"
+                    >
+
+                    <!--Attack-->
+                    <Label 
+                        Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Attack"/>
+
+                    <Label 
+                        Grid.Row="0" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Attack}"/>
+
+                    <Button
+                        Grid.Row="0" Grid.Column="3"
+                        x:Name="AttackDownButton"
+                        Text="-"
+                        Clicked="AttackDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="0" Grid.Column="4"
+                        x:Name="AttackUpButton"
+                        Text="+"
+                        Clicked="AttackUpButton_Clicked"/>
+
+                    <!--Defense-->
+                    <Label 
+                        Grid.Row="1" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Defense"/>
+
+                    <Label 
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Defense}"/>
+
+                    <Button
+                        Grid.Row="1" Grid.Column="3"
+                        x:Name="DefenseDownButton"
+                        Text="-"
+                        Clicked="DefenseDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="1" Grid.Column="4"
+                        x:Name="DefenseUpButton"
+                        Text="+"
+                        Clicked="DefenseUpButton_Clicked"/>
+
+                    <!--Speed-->
+                    <Label 
+                        Grid.Row="2" Grid.Column="0"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Speed"/>
+
+                    <Label 
+                        Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource ValueStyle}"
+                        Text="{Binding Data.Speed}"/>
+
+                    <Button
+                        Grid.Row="2" Grid.Column="3"
+                        x:Name="SpeedDownButton"
+                        Text="-"
+                        Clicked="SpeedDownButton_Clicked"/>
+
+                    <Button
+                        Grid.Row="2" Grid.Column="4"
+                        x:Name="SpeedUpButton"
+                        Text="+"
+                        Clicked="SpeedUpButton_Clicked"/>
+                </Grid>
+
+                <Button 
+                        x:Name="Randomize"
+                        Text="Random"
+                        Clicked="RandomButton_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
