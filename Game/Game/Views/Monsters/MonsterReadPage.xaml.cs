@@ -77,13 +77,7 @@ namespace Game.Views
                 ItemBox.Children.Remove(data);
             }
 
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Head));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Necklass));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
-            ItemBox.Children.Add(GetItemToDisplay(ItemLocationEnum.Feet));
+            ItemBox.Children.Add(GetItemToDisplay());
         }
 
         /// <summary>
@@ -91,17 +85,17 @@ namespace Game.Views
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        public StackLayout GetItemToDisplay()
         {
             // Defualt Image is the Plus
             var ImageSource = "icon_cancel.png";
             var ClickableButton = true;
 
-            var data = ViewModel.Data.GetItemByLocation(location);
+            var data = ViewModel.Data.GetItem(ViewModel.Data.UniqueItem);
             if (data == null)
             {
                 // Show the Default Icon for the Location
-                data = new ItemModel { Location = location, ImageURI = ImageSource };
+                data = new ItemModel { Location = ItemLocationEnum.Unknown, ImageURI = ImageSource };
 
                 // Turn off click action
                 ClickableButton = false;
@@ -123,7 +117,7 @@ namespace Game.Views
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = location.ToMessage(),
+                Text = "Unique Drop",
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
