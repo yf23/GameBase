@@ -27,6 +27,12 @@
 
                 <Label Text="Update Page" Style="{StaticResource HeaderStyle}"/>
 
+
+                <Button 
+                        x:Name="Randomize"
+                        Text="Random"
+                        Clicked="RandomButton_Clicked"/>
+                
                 <Grid
                             RowSpacing="1"
                             ColumnSpacing="2"
@@ -158,10 +164,6 @@
                         Clicked="SpeedUpButton_Clicked"/>
                 </Grid>
 
-                <Button 
-                        x:Name="Randomize"
-                        Text="Random"
-                        Clicked="RandomButton_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
