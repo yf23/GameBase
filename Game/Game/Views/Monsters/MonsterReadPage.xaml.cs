@@ -95,7 +95,7 @@ namespace Game.Views
             if (data == null)
             {
                 // Show the Default Icon for the Location
-                data = new ItemModel { Location = ItemLocationEnum.Unknown, ImageURI = ImageSource };
+                data = new ItemModel { Location = ItemLocationEnum.Unknown, ImageURI = ImageSource, Name="None" };
 
                 // Turn off click action
                 ClickableButton = false;
@@ -117,7 +117,7 @@ namespace Game.Views
             // Add the Display Text for the item
             var ItemLabel = new Label
             {
-                Text = "Unique Drop",
+                Text = data.Name,
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center
