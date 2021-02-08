@@ -56,13 +56,13 @@
                                 Style="{StaticResource EntryStyle}"/>
 
                     <Label Grid.Row="2" Grid.Column="0"
-                                Text="Job" 
+                                Text="Difficulty" 
                                 Style="{StaticResource LabelStyle}"/>
 
                     <Picker Grid.Row="2" Grid.Column="1"
-                                x:Name="JobPicker"
-                                ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetJobList}" 
-                                SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                                x:Name="DifficultyPicker"
+                                ItemsSource="{x:Static local_enum:DifficultyEnumHelper.GetListMonster}" 
+                                SelectedItem="{Binding Data.Difficulty, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                                 />
 
                     <StackLayout Grid.Row="3" Grid.Column="1" Style="{StaticResource HorizontalStack}" HorizontalOptions="FillAndExpand">
@@ -77,24 +77,7 @@
 
                     </StackLayout>
 
-                    <Label Grid.Row="4" Grid.Column="0"
-                                Text="Level" 
-                                Style="{StaticResource LabelStyle}"/>
-
-                    <Picker Grid.Row="4" Grid.Column="1"
-                                x:Name="LevelPicker"
-                                SelectedItem="{Binding SelectedItemProperty}" 
-                                SelectedIndexChanged="LevelPicker_Changed"/>
-
-                    <Label Grid.Row="5" Grid.Column="0"
-                                Text="Max Health" 
-                                Style="{StaticResource LabelStyle}"/>
-
-                    <Label Grid.Row="5" Grid.Column="1"
-                                x:Name="MaxHealthValue"
-                                Text="{Binding Data.MaxHealth, StringFormat= '{0:G} hp'}" 
-                                Style="{StaticResource ValueStyle}"/>
-
+                   
                 </Grid>
 
                 <Grid

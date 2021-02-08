@@ -34,8 +34,6 @@ namespace Game.Views
 
             this.ViewModel = data;
 
-            LoadLevelPickerValues();
-
             UpdatePageBindingContext();
         }
 
@@ -56,9 +54,8 @@ namespace Game.Views
             BindingContext = this.ViewModel;
 
             // This resets the Picker to the Character's level
-            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
-
-            JobPicker.SelectedItem = ViewModel.Data.Job.ToString();
+    
+            DifficultyPicker.SelectedItem = ViewModel.Data.Difficulty.ToString();
             
             SetEnableStateAttributeButtons();
 
@@ -107,61 +104,7 @@ namespace Game.Views
         }
 
         #region Picker
-        /// <summary>
-        /// Load the values for the Level Picker
-        /// </summary>
-        /// <returns></returns>
-        public bool LoadLevelPickerValues()
-        {
-            // Load the values for the Level into the Picker
-            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
-            {
-                LevelPicker.Items.Add(i.ToString());
-            }
 
-            LevelPicker.SelectedIndex = -1;
-
-            return true;
-        }
-
-        /// <summary>
-        /// The Level selected from the list
-        /// Need to recalculate Max Health
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void LevelPicker_Changed(object sender, EventArgs args)
-        {
-            // If the Picker is not set, then set it
-            if (LevelPicker.SelectedIndex == -1)
-            {
-                LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
-                return;
-            }
-
-            var result = LevelPicker.SelectedIndex + 1;
-
-            // Only roll again for health if the level changed.
-            if (result != ViewModel.Data.Level)
-            {
-                // Change the Level
-                ViewModel.Data.Level = result;
-
-                // Roll for new HP
-                ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
-
-                UpdateHealthValue();
-            }
-        }
-
-        /// <summary>
-        /// Change the Level Picker
-        /// </summary>
-        public void UpdateHealthValue()
-        {
-            // Show the Result
-            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
-        }
         #endregion Picker
 
         #region AttributeButtons
