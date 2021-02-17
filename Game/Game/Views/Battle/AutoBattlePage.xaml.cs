@@ -26,6 +26,11 @@ namespace Game.Views
 			InitializeComponent ();
 		}
 
+		/// <summary>
+		/// Defines what happens when the AutoBattleButton is clicked.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public async void AutobattleButton_Clicked(object sender, EventArgs e)
 		{
 			// Call into Auto Battle from here to do the Battle...
