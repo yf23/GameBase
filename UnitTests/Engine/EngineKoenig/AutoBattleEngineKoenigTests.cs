@@ -93,6 +93,7 @@ namespace UnitTests.Engine.EngineKoenig
 
             //Reset
             DiceHelper.DisableForcedRolls();
+            CharacterIndexViewModel.Instance.ForceDataRefresh();
 
             //Assert
             Assert.AreEqual(true, result);
@@ -125,6 +126,7 @@ namespace UnitTests.Engine.EngineKoenig
             var result = await AutoBattleEngine.RunAutoBattle();
 
             //Reset
+            CharacterIndexViewModel.Instance.ForceDataRefresh();
 
             //Assert
             Assert.AreEqual(true, result);
@@ -150,12 +152,15 @@ namespace UnitTests.Engine.EngineKoenig
 
             //Act
             var result = AutoBattleEngine.CreateCharacterParty();
+            var count = AutoBattleEngine.Battle.EngineSettings.CharacterList.Count();
+            var name = AutoBattleEngine.Battle.EngineSettings.CharacterList.ElementAt(5).Name;
 
             //Reset
+            CharacterIndexViewModel.Instance.ForceDataRefresh();
 
             //Assert
-            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count());
-            Assert.AreEqual("6", AutoBattleEngine.Battle.EngineSettings.CharacterList.ElementAt(5).Name);
+            Assert.AreEqual(6, count);
+            Assert.AreEqual("6", name);
         }
 
         [Test]
@@ -168,11 +173,13 @@ namespace UnitTests.Engine.EngineKoenig
 
             //Act
             var result = AutoBattleEngine.CreateCharacterParty();
+            var count = AutoBattleEngine.Battle.EngineSettings.CharacterList.Count();
 
             //Reset
+            CharacterIndexViewModel.Instance.ForceDataRefresh();
 
             //Assert
-            Assert.AreEqual(6, AutoBattleEngine.Battle.EngineSettings.CharacterList.Count());
+            Assert.AreEqual(6, count);
         }
         #endregion CreateCharacterParty   
     }
