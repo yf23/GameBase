@@ -3,10 +3,15 @@ using System.IO;
 
 namespace Game
 {
+    /// <summary>
+    /// Class holding constants.
+    /// </summary>
     public static class Constants
     {
+        // Database filename
         public const string DatabaseFilename = "game.db3";
 
+        // SQLite flags
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
             SQLite.SQLiteOpenFlags.ReadWrite |
@@ -15,6 +20,7 @@ namespace Game
             // enable multi-threaded database access
             SQLite.SQLiteOpenFlags.SharedCache;
 
+        // Database path
         public static string DatabasePath
         {
             get
