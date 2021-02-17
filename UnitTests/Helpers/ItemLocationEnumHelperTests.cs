@@ -377,5 +377,33 @@ namespace UnitTests.Helpers
             Assert.AreEqual(Expected, Result, TestContext.CurrentContext.Test.Name);
         }
         #endregion ItemLocationEnumConverter
+
+        #region ConvertMessageToEnum
+        [Test]
+        public void ConvertMessageToEnum_Valid_Feet_Should_Return_Enum()
+        {
+
+            // Arrange
+
+            // Act
+            var result = ItemLocationEnumHelper.ConvertMessageToEnum("Feet");
+
+            // Assert
+            Assert.AreEqual(ItemLocationEnum.Feet, result);
+        }
+
+        [Test]
+        public void ConvertMessageToEnum_InValid_Bogus_Should_Return_Unknown()
+        {
+            // Arrange
+
+            // Act
+            var result = ItemLocationEnumHelper.ConvertMessageToEnum("bogus");
+
+            // Assert
+            Assert.AreEqual(ItemLocationEnum.Unknown, result);
+        }
+
+        #endregion ConvertMessageToEnum
     }
 }
