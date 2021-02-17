@@ -284,5 +284,204 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        #region ButtonUpDown
+        [Test]
+        public void MonsterUpdatePage_AttackDownButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Attack = 1;
+
+            // Act
+            page.AttackDownButton_Clicked(null,null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_AttackUpButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Attack = 1;
+
+            // Act
+            page.AttackUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_DefenseDownButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Defense = 1;
+
+            // Act
+            page.DefenseDownButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_DefenseUpButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Defense = 1;
+
+            // Act
+            page.DefenseUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_SpeedDownButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Speed = 1;
+
+            // Act
+            page.SpeedDownButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_SpeedUpButton_Clicked_Valid_1_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Speed = 1;
+
+            // Act
+            page.SpeedUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_AttackDownButton_Clicked_Invalid_0_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Attack = 0;
+
+            // Act
+            page.AttackDownButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_AttackUpButton_Clicked_Invalid_10_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Attack = 10;
+
+            // Act
+            page.AttackUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_DefenseDownButton_Clicked_Invalid_0_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Defense = 0;
+
+            // Act
+            page.DefenseDownButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_DefenseUpButton_Clicked_Invalid_10_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Defense = 10;
+
+            // Act
+            page.DefenseUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_SpeedDownButton_Clicked_Invalid_0_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Speed = 0;
+
+            // Act
+            page.SpeedDownButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterUpdatePage_SpeedUpButton_Clicked_Invalid_10_Should_Fail()
+        {
+            // Arrange
+            page.ViewModel.Data.Speed = 10;
+
+            // Act
+            page.SpeedUpButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+        #endregion ButtonUpDown
+
+        #region RandomButton_Clicked
+        [Test]
+        public void MonsterUpdatePage_RandomButton_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.RandomButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+        #endregion RandomButton_Clicked
+
     }
 }
