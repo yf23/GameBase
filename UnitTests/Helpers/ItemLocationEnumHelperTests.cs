@@ -166,11 +166,11 @@ namespace UnitTests.Helpers
         {
             // Arrange
 
-            var value = 3;
+            var value = 1;
 
             // Act
             var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
-            var Expected = ItemLocationEnum.PrimaryHand;
+            var Expected = ItemLocationEnum.Head;
 
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
