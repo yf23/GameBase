@@ -50,7 +50,10 @@
         // Ending of the Html Block for Html formatting
         public string htmlTail = @"</p></body></html>";
 
-
+        /// <summary>
+        /// Clears all messages by setting them to empty. Enums are set to Unknown.
+        /// </summary>
+        /// <returns></returns>
         public bool ClearMessages()
         {
 
