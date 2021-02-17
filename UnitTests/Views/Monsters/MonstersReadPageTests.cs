@@ -110,6 +110,21 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void MonsterReadPage_GetItemToDisplay_Valid_Popup_Should_Have_Clickable_Button()
+        {
+            // Arrange
+            page.ViewModel.Data.UniqueItem = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
+
+            // Act
+            page.GetItemToDisplay();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void MonsterReadPage_ShowPopup_Valid_Should_Pass()
         {
             // Arrange
