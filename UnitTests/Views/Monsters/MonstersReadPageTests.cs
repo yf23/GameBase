@@ -125,6 +125,30 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void MonsterReadPage_GetItemToDisplay_Valid_Click_Button_Should_Open_Popup()
+        {
+            // Arrange
+            page.ViewModel.Data.UniqueItem = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
+
+            var stackView = page.GetItemToDisplay();
+
+            ImageButton imageButtonView = new ImageButton();
+
+            foreach (View i in ((StackLayout)stackView).Children.Where(x => x.GetType() == typeof(ImageButton))) 
+            {
+                imageButtonView = (ImageButton)i;
+            }
+
+            // Act
+            imageButtonView.PerformClick();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void MonsterReadPage_ShowPopup_Valid_Should_Pass()
         {
             // Arrange
@@ -226,5 +250,6 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
     }
 }
