@@ -16,7 +16,9 @@ public static class ImageButtonExtensions
     {
         // Check parameters
         if (sourceButton == null)
-            throw new ArgumentNullException(nameof(sourceButton));
+        {
+            return;
+        }
 
         // 1.) Raise the Click-event
         sourceButton.RaiseEventViaReflection(nameof(sourceButton.Clicked), EventArgs.Empty);
