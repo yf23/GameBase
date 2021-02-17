@@ -405,5 +405,19 @@ namespace UnitTests.Helpers
         }
 
         #endregion ConvertMessageToEnum
+
+        #region GetListMessageCharacter
+        [Test]
+        public void GetListMessageCharacter_Valid_Default_Should_Return_List()
+        {
+            // Arrange
+
+            // Act
+            var result = ItemLocationEnumHelper.GetListMessageCharacter;
+
+            // Assert
+            Assert.AreEqual(7, result.Count());
+        }
+        #endregion GetListMessageCharacter
     }
 }
