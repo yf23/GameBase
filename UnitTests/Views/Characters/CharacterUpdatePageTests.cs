@@ -523,5 +523,83 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
         #endregion RandomButton_Clicked
+
+        #region LevelPicker_Changed
+        [Test]
+        public void CharacterUpdatePage_LevelPicker_SelectedIndex_Neg1_Should_Return_Level()
+        {
+            // Arrange
+
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 10
+            };
+            
+            var control = (Picker)page.FindByName("LevelPicker");
+            control.SelectedIndex = -1;
+
+            // Act
+            page.LevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(10, result+1); 
+        }
+
+        [Test]
+        public void CharacterUpdatePage_LevelPicker_SelectedIndex_No_Change_Should_Skip()
+        {
+            // Arrange
+
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 10
+            };
+
+            var control = (Picker)page.FindByName("LevelPicker");
+            control.SelectedIndex = 10-1;
+
+            // Act
+            page.LevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(10, result + 1);
+        }
+
+
+        [Test]
+        public void CharacterUpdatePage_LevelPicker_SelectedIndex_Change_Should_Update_Picker_To_Level()
+        {
+            // Arrange
+
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 1
+            };
+
+            var control = (Picker)page.FindByName("LevelPicker");
+            control.SelectedIndex = 15;
+
+            // Act
+            page.LevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(16, result + 1);
+        }
+        #endregion LevelPicker_Changed
     }
 }
