@@ -35,6 +35,9 @@ namespace Game.Engine.EngineKoenig
         // Output Score
         #endregion Algrorithm
 
+        /// <summary>
+        /// Get and set the battle variable.
+        /// </summary>
         public new IBattleEngineInterface Battle
         {
             get
