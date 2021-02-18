@@ -2,6 +2,9 @@
 
 namespace Game.Engine.EngineInterfaces
 {
+    /// <summary>
+    /// Interfaces for the Auto Battle Engine
+    /// </summary>
     public interface IAutoBattleInterface
     {
         // Battle Engine
