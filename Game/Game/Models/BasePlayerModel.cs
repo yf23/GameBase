@@ -171,11 +171,11 @@ namespace Game.Models
         #region Attack        
         [Ignore]
         // Return the attack value
-        public int GetAttackLevelBonus { get { return LevelTableHelper.LevelDetailsList[Level].Attack; } }
+        public int GetAttackLevelBonus => LevelTableHelper.GetLevelAttribute(Level).Attack;
 
         [Ignore]
         // Return the Attack with Item Bonus
-        public int GetAttackItemBonus { get { return GetItemBonus(AttributeEnum.Attack); } }
+        public int GetAttackItemBonus => GetItemBonus(AttributeEnum.Attack);
 
         [Ignore]
         // Return the Attack with Item Bonus
@@ -203,21 +203,21 @@ namespace Game.Models
 
         [Ignore]
         // Return the Total of All Attack
-        public int GetAttackTotal { get { return GetAttack(); } }
+        public int GetAttackTotal => GetAttack();
         #endregion Attack
 
         #region Defense
         [Ignore]
         // Return the Defense value
-        public int GetDefenseLevelBonus { get { return LevelTableHelper.LevelDetailsList[Level].Defense; } }
+        public int GetDefenseLevelBonus => LevelTableHelper.GetLevelAttribute(Level).Defense;
 
         [Ignore]
         // Return the Defense with Item Bonus
-        public int GetDefenseItemBonus { get { return GetItemBonus(AttributeEnum.Defense); } }
+        public int GetDefenseItemBonus => GetItemBonus(AttributeEnum.Defense);
 
         [Ignore]
         // Return the Total of All Defense
-        public int GetDefenseTotal { get { return GetDefense(); } }
+        public int GetDefenseTotal => GetDefense();
 
 
         [Ignore]
@@ -250,15 +250,15 @@ namespace Game.Models
         #region Speed
         [Ignore]
         // Return the Speed value
-        public int GetSpeedLevelBonus { get { return LevelTableHelper.LevelDetailsList[Level].Speed; } }
+        public int GetSpeedLevelBonus => LevelTableHelper.LevelDetailsList[Level].Speed;
 
         [Ignore]
         // Return the Speed with Item Bonus
-        public int GetSpeedItemBonus { get { return GetItemBonus(AttributeEnum.Speed); } }
+        public int GetSpeedItemBonus => GetItemBonus(AttributeEnum.Speed);
 
         [Ignore]
         // Return the Total of All Speed
-        public int GetSpeedTotal { get { return GetSpeed(); } }
+        public int GetSpeedTotal => GetSpeed();
 
         [Ignore]
         // Return the Attack with Item Bonus
@@ -288,35 +288,35 @@ namespace Game.Models
         #region CurrentHealth
         [Ignore]
         // Return the CurrentHealth value
-        public int GetCurrentHealthLevelBonus { get { return 0; } }
+        public int GetCurrentHealthLevelBonus => 0;
 
         [Ignore]
         // Return the CurrentHealth with Item Bonus
-        public int GetCurrentHealthItemBonus { get { return GetItemBonus(AttributeEnum.CurrentHealth); } }
+        public int GetCurrentHealthItemBonus => GetItemBonus(AttributeEnum.CurrentHealth);
 
         [Ignore]
         // Return the Total of All CurrentHealth
-        public int GetCurrentHealthTotal { get { return GetCurrentHealth(); } }
+        public int GetCurrentHealthTotal => GetCurrentHealth();
         #endregion CurrentHealth
 
         #region MaxHealth
         [Ignore]
         // Return the MaxHealth value
-        public int GetMaxHealthLevelBonus { get { return 0; } }
+        public int GetMaxHealthLevelBonus => 0;
 
         [Ignore]
         // Return the MaxHealth with Item Bonus
-        public int GetMaxHealthItemBonus { get { return GetItemBonus(AttributeEnum.MaxHealth); } }
+        public int GetMaxHealthItemBonus => GetItemBonus(AttributeEnum.MaxHealth);
 
         [Ignore]
         // Return the Total of All MaxHealth
-        public int GetMaxHealthTotal { get { return GetMaxHealth(); } }
+        public int GetMaxHealthTotal => GetMaxHealth();
         #endregion MaxHealth
 
         #region Damage
         [Ignore]
         // Return the Damage value, it is 25% of the Level rounded up
-        public int GetDamageLevelBonus { get { return Convert.ToInt32(Math.Ceiling(Level * .25)); } }
+        public int GetDamageLevelBonus => Convert.ToInt32(Math.Ceiling(Level * .25));
 
         [Ignore]
         // Return the Damage with Item Bonus
