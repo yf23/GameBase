@@ -37,5 +37,61 @@ namespace UnitTests.GameRules
             // Assert
             Assert.AreEqual(44, result);
         }
+
+        [Test]
+        public void LevelTableHelper_GetLevelAttribute_Valid_Level_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = LevelTableHelper.GetLevelAttribute(1);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(1, result.Level);
+        }
+
+        [Test]
+        public void LevelTableHelper_GetLevelAttribute_InValid_Level_0_Should_ReturnLast()
+        {
+            // Arrange
+
+            // Act
+            var result = LevelTableHelper.GetLevelAttribute(0);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result.Level);
+        }
+
+        [Test]
+        public void LevelTableHelper_GetLevelAttribute_InValid_Level_Neg1_Should_ReturnLast()
+        {
+            // Arrange
+
+            // Act
+            var result = LevelTableHelper.GetLevelAttribute(-1);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(21, result.Level);
+        }
+
+        [Test]
+        public void LevelTableHelper_GetLevelAttribute_InValid_Level_25_Should_ReturnLast()
+        {
+            // Arrange
+
+            // Act
+            var result = LevelTableHelper.GetLevelAttribute(25);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(21, result.Level);
+        }
     }
 }
