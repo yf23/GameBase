@@ -177,4 +177,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_update.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\d20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\elf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\troll.png" />
+  </ItemGroup>
 </Project>
