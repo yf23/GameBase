@@ -82,5 +82,21 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        #region AnimationExamples
+        [Test]
+        public void AutoBattlePage_RollDice_Clicked_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.RollDice_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+        #endregion AnimationExamples
     }
 }

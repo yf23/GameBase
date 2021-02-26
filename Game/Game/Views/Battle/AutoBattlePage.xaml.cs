@@ -58,5 +58,40 @@ namespace Game.Views
 
 			AutobattleImage.Source = "troll6_d.gif";
 		}
+
+		#region AnimationExamples
+		public void RollDice_Clicked(object sender, EventArgs e)
+		{
+			DiceAnimationHandeler();
+
+			return;
+		}
+
+		public bool DiceAnimationHandeler()
+		{
+			// Animate the Rolling of the Dice
+			ImageButton image = RollDice;
+			uint duration = 1000;
+
+			var parentAnimation = new Animation();
+
+			// Grow the image Size
+			var scaleUpAnimation = new Animation(v => image.Scale = v, 1, 2, Easing.SpringIn);
+
+			// Spin the Image
+			var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
+
+			// Shrink the Image
+			var scaleDownAnimation = new Animation(v => image.Scale = v, 2, 1, Easing.SpringOut);
+
+			parentAnimation.Add(0, 0.5, scaleUpAnimation);
+			parentAnimation.Add(0, 1, rotateAnimation);
+			parentAnimation.Add(0.5, 1, scaleDownAnimation);
+
+			parentAnimation.Commit(this, "ChildAnimations", 16, duration, null, null);
+
+			return true;
+		}
+		#endregion AnimationExamples
 	}
 }

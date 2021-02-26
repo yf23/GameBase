@@ -18,6 +18,12 @@
                         Style="{StaticResource CenterMessageStyle}"/>
             </StackLayout>
 
+            <ImageButton 
+                                x:Name="RollDice"
+                                Style="{StaticResource ImageLargeStyle}"
+                                Source="d20.png"
+                                Clicked="RollDice_Clicked"/>
+            
             <StackLayout Style="{StaticResource CardImageTextBox}">
 
                 <Label 
