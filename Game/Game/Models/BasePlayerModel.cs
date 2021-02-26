@@ -840,6 +840,11 @@ namespace Game.Models
 
                 case ItemLocationEnum.Feet:
                     return GetItem(Feet);
+
+                case ItemLocationEnum.Finger:
+                case ItemLocationEnum.Unknown:
+                default:
+                    break;
             }
 
             return null;
