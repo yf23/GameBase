@@ -42,7 +42,6 @@
                 </StackLayout>
 
                 <StackLayout x:Name="DiceBox">
-
                     <ImageButton 
                     x:Name="RollDice"
                     HorizontalOptions="Center"
