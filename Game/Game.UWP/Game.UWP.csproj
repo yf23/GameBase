@@ -104,6 +104,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="action_ability.png" />
+    <Content Include="action_attack.png" />
+    <Content Include="action_default.png" />
+    <Content Include="action_move.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-125.png" />
     <Content Include="Assets\BadgeLogo.scale-150.png" />
@@ -132,8 +136,27 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="battleboard.png" />
+    <Content Include="cauldren.png" />
     <Content Include="d20.png" />
+    <Content Include="door.png" />
+    <Content Include="dungeon_door.png" />
     <Content Include="elf.png" />
+    <Content Include="elf1.png" />
+    <Content Include="elf1_a.gif" />
+    <Content Include="elf2.png" />
+    <Content Include="elf3.png" />
+    <Content Include="elf4.png" />
+    <Content Include="elf5.png" />
+    <Content Include="elf6.png" />
+    <Content Include="elf7.png" />
+    <Content Include="feet1.png" />
+    <Content Include="feet2.png" />
+    <Content Include="gameover.png" />
+    <Content Include="grey_door.png" />
+    <Content Include="hat1.png" />
+    <Content Include="hat2.png" />
+    <Content Include="home_background.png" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
@@ -142,7 +165,12 @@
     <Content Include="icon_save.png" />
     <Content Include="icon_update.png" />
     <Content Include="item.png" />
+    <Content Include="items.png" />
+    <Content Include="knight.png" />
     <Content Include="mapcell.png" />
+    <Content Include="neck1.png" />
+    <Content Include="neck2.png" />
+    <Content Include="potion1.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -171,7 +199,33 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="ring1.png" />
+    <Content Include="ring2.png" />
+    <Content Include="score.png" />
+    <Content Include="shield1.png" />
+    <Content Include="shield2.png" />
+    <Content Include="shield3.png" />
+    <Content Include="shield4.png" />
+    <Content Include="sword1.png" />
+    <Content Include="sword10.png" />
+    <Content Include="sword11.png" />
+    <Content Include="sword2.png" />
+    <Content Include="sword3.png" />
+    <Content Include="sword4.png" />
+    <Content Include="sword5.png" />
+    <Content Include="sword6.png" />
+    <Content Include="sword7.png" />
+    <Content Include="sword8.png" />
+    <Content Include="sword9.png" />
     <Content Include="troll.png" />
+    <Content Include="troll1.png" />
+    <Content Include="troll2.png" />
+    <Content Include="troll3.png" />
+    <Content Include="troll4.png" />
+    <Content Include="troll5.png" />
+    <Content Include="troll6.png" />
+    <Content Include="troll6_d.gif" />
+    <Content Include="village.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
