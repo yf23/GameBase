@@ -32,9 +32,6 @@ namespace UnitTests.Views
             app = new App();
             Application.Current = app;
 
-            // For now, set the engine to the Koenig Engine, change when ready 
-            BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
-
             page = new RoundOverPage();
         }
 
@@ -253,7 +250,7 @@ namespace UnitTests.Views
         public void RoundOverPage_GetItemToDisplay_Click_Button_Valid_Should_Pass()
         {
             // Arrange
-            var item = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.PrimaryHand);
+            var item = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head);
             var StackItem = page.GetItemToDisplay(item);
             var dataImage = StackItem.Children[0];
 

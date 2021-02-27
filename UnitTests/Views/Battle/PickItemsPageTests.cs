@@ -10,7 +10,6 @@ using Game;
 using Game.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
-using Game.ViewModels;
 
 namespace UnitTests.Views
 {
@@ -29,9 +28,6 @@ namespace UnitTests.Views
             //This is your App.xaml and App.xaml.cs, which can have resources, etc.
             app = new App();
             Application.Current = app;
-
-            // For now, set the engine to the Koenig Engine, change when ready 
-            BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
 
             page = new PickItemsPage();
         }
