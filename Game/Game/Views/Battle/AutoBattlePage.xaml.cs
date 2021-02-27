@@ -18,11 +18,17 @@ namespace Game.Views
 		// Hold the Engine, so it can be swapped out for unit testing
 		public IAutoBattleInterface AutoBattle = BattleEngineViewModel.Instance.AutoBattleEngine;
 
+		// Flag that this is running under Tests
+		public bool UnitTestRunning;
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public AutoBattlePage ()
+		public AutoBattlePage (bool UnitTest = false)
 		{
+			// Flag if running under tests for animation loop control
+			UnitTestRunning = UnitTest;
+
 			InitializeComponent ();
 		}
 
@@ -60,6 +66,11 @@ namespace Game.Views
 		}
 
 		#region AnimationExamples
+		/// <summary>
+		/// Animation for Dice
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public void RollDice_Clicked(object sender, EventArgs e)
 		{
 			DiceAnimationHandeler();
@@ -67,10 +78,13 @@ namespace Game.Views
 			return;
 		}
 
+		/// <summary>
+		/// Example of Animation on Dice
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public async void RollDiceMove_Clicked(object sender, EventArgs e)
 		{
-
-
 			// Start Spinning the dice
 
 			ImageButton image = RollDiceMove;
@@ -81,18 +95,27 @@ namespace Game.Views
 			// Spin the Image, it will go forever because of the ()=>true at the end
 			var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
 			parentAnimation.Add(0, 1, rotateAnimation);
-			parentAnimation.Commit(this, "SpinAnimation", 16, duration*2, null, null,() => true);
 
+			/*
+			 * The commit animation if repeating, will hang the unit test harness, so need to set it to false for testing
+			 * The UT constructor allows it to be called and set the UT flag
+			 * 
+			 */ 
+			var repeat = true;
+
+			if (UnitTestRunning)
+            {
+				repeat = false;
+            }
+
+			parentAnimation.Commit(this, "SpinAnimation", 16, duration * 2, null, null, () => repeat);
 
 			var Boxwidth = DiceBox.Width;
 			var BoxHeight = DiceBox.Height;
 
-			//RollDice.FadeTo(0, duration);
 			await RollDiceMove.TranslateTo(0, 0, duration, Easing.CubicIn);
 			
 			await RollDiceMove.TranslateTo(0, BoxHeight,duration, Easing.SinIn);
-
-			//await RollDiceMove.TranslateTo(0, DiceBox.Height - 10, duration, Easing.BounceIn);
 
 			int bounceHeight = (int)BoxHeight / 2;
 			int bounceSize = (int)BoxHeight / 4;
@@ -114,6 +137,10 @@ namespace Game.Views
 			return;
 		}
 
+		/// <summary>
+		/// Dice Animation Handeler
+		/// </summary>
+		/// <returns></returns>
 		public bool DiceAnimationHandeler()
 		{
 			// Animate the Rolling of the Dice
