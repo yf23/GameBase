@@ -67,6 +67,53 @@ namespace Game.Views
 			return;
 		}
 
+		public async void RollDiceMove_Clicked(object sender, EventArgs e)
+		{
+
+
+			// Start Spinning the dice
+
+			ImageButton image = RollDiceMove;
+			uint duration = 150;
+
+			var parentAnimation = new Animation();
+
+			// Spin the Image, it will go forever because of the ()=>true at the end
+			var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
+			parentAnimation.Add(0, 1, rotateAnimation);
+			parentAnimation.Commit(this, "SpinAnimation", 16, duration*2, null, null,() => true);
+
+
+			var Boxwidth = DiceBox.Width;
+			var BoxHeight = DiceBox.Height;
+
+			//RollDice.FadeTo(0, duration);
+			await RollDiceMove.TranslateTo(0, 0, duration, Easing.CubicIn);
+			
+			await RollDiceMove.TranslateTo(0, BoxHeight,duration, Easing.SinIn);
+
+			//await RollDiceMove.TranslateTo(0, DiceBox.Height - 10, duration, Easing.BounceIn);
+
+			int bounceHeight = (int)BoxHeight / 2;
+			int bounceSize = (int)BoxHeight / 4;
+			int bounceWidth = (int)Boxwidth / 4;
+
+			for(var i=0; i< Boxwidth-bounceWidth; i +=bounceWidth)
+            {
+				await RollDiceMove.TranslateTo(i, BoxHeight, duration);
+				await RollDiceMove.TranslateTo(i+(bounceWidth/2), DiceBox.Height-bounceHeight, duration);
+
+				bounceHeight -= bounceSize;
+			}
+
+			await RollDiceMove.TranslateTo(Boxwidth, BoxHeight, duration,Easing.CubicOut);
+
+
+			// Cancel the spin animation
+			this.AbortAnimation("SpinAnimation");
+			return;
+		}
+
 		public bool DiceAnimationHandeler()
 		{
 			// Animate the Rolling of the Dice

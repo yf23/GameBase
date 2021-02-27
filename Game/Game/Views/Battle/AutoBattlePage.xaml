@@ -5,28 +5,23 @@
              >
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand">
-            <StackLayout Style="{StaticResource CardImageTextBox}">
+        <StackLayout>
+            <StackLayout Style="{StaticResource VerticalStack}" HorizontalOptions="CenterAndExpand">
+                <StackLayout Style="{StaticResource CardImageTextBox}">
 
-                <ImageButton
+                    <ImageButton
                         Source="item.png"
                         Style="{StaticResource ImageLargeStyle}"
                         Clicked="AutobattleButton_Clicked"/>
 
-                <Label 
+                    <Label 
                         Text="Begin Battle"
                         Style="{StaticResource CenterMessageStyle}"/>
-            </StackLayout>
+                </StackLayout>
 
-            <ImageButton 
-                                x:Name="RollDice"
-                                Style="{StaticResource ImageLargeStyle}"
-                                Source="d20.png"
-                                Clicked="RollDice_Clicked"/>
-            
-            <StackLayout Style="{StaticResource CardImageTextBox}">
+                <StackLayout Style="{StaticResource CardImageTextBox}">
 
-                <Label 
+                    <Label 
                     x:Name="BattleMessageValue"
                     Text=""
                     LineBreakMode="WordWrap"
@@ -38,12 +33,39 @@
                     Style="{StaticResource ListStyle}"
                     />
 
-                <Image
+                    <Image
                         x:Name="AutobattleImage"
                         Source="elf1_a.gif"
                         IsAnimationPlaying="True"
                         Style="{StaticResource ImageLargeStyle}"></Image>
 
+                </StackLayout>
+
+                <StackLayout x:Name="DiceBox">
+
+                    <ImageButton 
+                    x:Name="RollDice"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Style="{StaticResource ImageLargeStyle}"
+                    Source="d20.png"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Clicked="RollDice_Clicked"/>
+
+                    <ImageButton 
+                    x:Name="RollDiceMove"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Style="{StaticResource ImageLargeStyle}"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Source="d20.png"
+                    TranslationX="0"    
+                    TranslationY="0"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Clicked="RollDiceMove_Clicked"/>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
