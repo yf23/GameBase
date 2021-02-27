@@ -21,7 +21,7 @@ namespace Game.Models
             Name = "Elf";
             Description = "Happy Elf";
             Level = 1;
-            ImageURI = "item.png";
+            ImageURI = "knight.png";
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
