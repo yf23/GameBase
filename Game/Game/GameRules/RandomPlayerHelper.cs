@@ -61,7 +61,7 @@ namespace Game.GameRules
         public static string GetMonsterImage()
         {
 
-            List<String> StringList = new List<String> { "item.png", "item.png", "item.png", "item.png", "item.png", "item.png" };
+            List<String> StringList = new List<String> { "troll1.png", "troll2.png", "troll3.png", "troll4.png", "troll5.png", "troll6.png" };
 
             var index = DiceHelper.RollDice(1, StringList.Count()) - 1;
 
@@ -82,7 +82,7 @@ namespace Game.GameRules
         public static string GetCharacterImage()
         {
 
-            List<String> StringList = new List<String> { "item.png", "item.png", "item.png", "item.png", "item.png", "item.png", "item.png" };
+            List<String> StringList = new List<String> { "elf1.png", "elf2.png", "elf3.png", "elf4.png", "elf5.png", "elf6.png", "elf7.png" };
 
             var index = DiceHelper.RollDice(1, StringList.Count()) - 1;
 
