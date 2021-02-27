@@ -64,20 +64,20 @@
         public static string ToImageURI(this ActionEnum value)
         {
             // Default String
-            var Message = "item.png";
+            var Message = "action_default.png";
 
             switch (value)
             {
                 case ActionEnum.Attack:
-                    Message = "item.png";
+                    Message = "action_attack.png";
                     break;
 
                 case ActionEnum.Move:
-                    Message = "item.png";
+                    Message = "action_move.png";
                     break;
 
                 case ActionEnum.Ability:
-                    Message = "item.png";
+                    Message = "action_ability.png";
                     break;
 
                 case ActionEnum.Unknown:
