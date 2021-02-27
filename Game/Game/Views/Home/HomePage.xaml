@@ -14,7 +14,11 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
                     <Image
-                         Source="item.png"
+                         Source="knight.png"
+                         Style="{StaticResource ImageLargeStyle}"/>
+
+                    <Image
+                         Source="troll.png"
                          Style="{StaticResource ImageLargeStyle}"/>
                 
                 </StackLayout>
@@ -22,7 +26,7 @@
                 <StackLayout HorizontalOptions="Center" Padding="70,5,70,0"> 
                
                     <Label 
-                        Text="Your Game Information"
+                        Text="The elves entered the woods to eraticate the monsters that threatened their villages."
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
