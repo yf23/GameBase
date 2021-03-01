@@ -333,8 +333,58 @@ namespace Game.Views
                 AutomationId = GetDictionaryFrameName(mapLocationModel)
             };
 
+            #region DragAndDropExample
+            /*
+             * Adding a Drag and Drop of the Frame as an example, I perfer the click event
+             */
+            var dragRecognizer = new DragGestureRecognizer
+            {
+                CanDrag = true,
+            };
+            dragRecognizer.DragStarting += (s, e) => DragStarted(mapLocationModel, e);
+            dragRecognizer.DropCompleted += (s, e) => DropCompleted(mapLocationModel,e);
+            MapFrame.GestureRecognizers.Add(dragRecognizer);
+
+            var dropRecognizer = new DropGestureRecognizer
+            {
+                AllowDrop = true,
+            };
+            dropRecognizer.Drop += (s, e) => DropTarget(mapLocationModel,e);
+            dropRecognizer.DragOver += (s, e) => DragOverTarget(mapLocationModel,e);
+            MapFrame.GestureRecognizers.Add(dropRecognizer);
+            #endregion DragAndDropExample
+
             return MapFrame;
         }
+
+
+        #region DragAndDrop
+
+        public bool DragStarted(MapModelLocation MapLocationModel, DragStartingEventArgs e)
+        {
+            // Id of who started the drag
+            e.Data.Properties.Add("StartID", MapLocationModel.Player.Id);
+            return true;
+        }
+
+        public bool DropCompleted(MapModelLocation MapLocationModel, DropCompletedEventArgs e)
+        {
+            return true;
+        }
+
+        public bool DropTarget(MapModelLocation MapLocationModel, DropEventArgs e)
+        {
+            // start ID is where it started from
+            string startID = (string)e.Data.Properties["StartID"];
+            return true;
+        }
+
+        public bool DragOverTarget(MapModelLocation MapLocationModel, DragEventArgs e)
+        {
+            return true;
+        }
+        #endregion DragAndDrop
+
 
         /// <summary>
         /// This add the ImageButton to the stack to kep track of
@@ -394,28 +444,28 @@ namespace Game.Views
         /// </summary>
         /// <param name="MapLocationModel"></param>
         /// <returns></returns>
-        public ImageButton DetermineMapImageButton(MapModelLocation MapLocationModel)
+        public ImageButton DetermineMapImageButton(MapModelLocation mapLocationModel)
         {
             var data = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["BattleMapPlayerSmallStyle"],
-                Source = MapLocationModel.Player.ImageURI,
+                Source = mapLocationModel.Player.ImageURI,
 
                 // Store the guid to identify this button
-                AutomationId = MapLocationModel.Player.Guid
+                AutomationId = mapLocationModel.Player.Guid
             };
 
-            switch (MapLocationModel.Player.PlayerType)
+            switch (mapLocationModel.Player.PlayerType)
             {
                 case PlayerTypeEnum.Character:
-                    data.Clicked += (sender, args) => SetSelectedCharacter(MapLocationModel);
+                    data.Clicked += (sender, args) => SetSelectedCharacter(mapLocationModel);
                     break;
                 case PlayerTypeEnum.Monster:
-                    data.Clicked += (sender, args) => SetSelectedMonster(MapLocationModel);
+                    data.Clicked += (sender, args) => SetSelectedMonster(mapLocationModel);
                     break;
                 case PlayerTypeEnum.Unknown:
                 default:
-                    data.Clicked += (sender, args) => SetSelectedEmpty(MapLocationModel);
+                    data.Clicked += (sender, args) => SetSelectedEmpty(mapLocationModel);
 
                     // Use the blank cell
                     data.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.EmptySquare.ImageURI;
@@ -561,13 +611,13 @@ namespace Game.Views
 
             // Show what action the Attacker used
             AttackerAttack.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction.ToImageURI();
-            
+
             var item = ItemIndexViewModel.Instance.GetItem(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PrimaryHand);
             if (item != null)
             {
                 AttackerAttack.Source = item.ImageURI;
             }
-            
+
             DefenderImage.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
             DefenderName.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.Name;
             DefenderHealth.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.GetCurrentHealthTotal.ToString() + " / " + BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.GetMaxHealthTotal.ToString();
