@@ -462,6 +462,16 @@ namespace Game.Engine.EngineBase
         /// <returns></returns>
         public virtual ItemModel SwapCharacterItem(PlayerInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
         {
+            if (character == null)
+            {
+                return null;
+            }
+
+            if (PoolItem == null)
+            {
+                return null;
+            }
+
             // Put on the new ItemModel, which drops the one back to the pool
             var droppedItem = character.AddItem(setLocation, PoolItem.Id);
 
