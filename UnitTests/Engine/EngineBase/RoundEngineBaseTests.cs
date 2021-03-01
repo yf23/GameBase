@@ -1206,5 +1206,39 @@ namespace UnitTests.Engine.EngineBase
             Assert.IsNull(result);
         }
         #endregion SwapCharacterItem
+
+        #region SetCurrentAttacker
+        [Test]
+        public void RoundEngine_SetCurrentAttacker_Valid_Should_Return_Attacker()
+        {
+            // Arrange
+            var player = new PlayerInfoModel(new CharacterModel());
+
+            // Act
+            var result = Engine.Round.SetCurrentAttacker(player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+        #endregion SetCurrentAttacker
+
+        #region SetCurrentDefender
+        [Test]
+        public void RoundEngine_SetCurrentDefender_Valid_Should_Return_Defender()
+        {
+            // Arrange
+            var player = new PlayerInfoModel(new CharacterModel());
+
+            // Act
+            var result = Engine.Round.SetCurrentDefender(player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+        #endregion SetCurrentDefender
     }
 }
