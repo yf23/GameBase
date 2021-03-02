@@ -9,163 +9,180 @@ using Game.Engine.EngineInterfaces;
 
 namespace Game.Views
 {
-	/// <summary>
-	/// The Main Game Page
-	/// </summary>
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AutoBattlePage : ContentPage
-	{
-		// Hold the Engine, so it can be swapped out for unit testing
-		public IAutoBattleInterface AutoBattle = BattleEngineViewModel.Instance.AutoBattleEngine;
+    /// <summary>
+    /// The Main Game Page
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AutoBattlePage : ContentPage
+    {
+        // Hold the Engine, so it can be swapped out for unit testing
+        public IAutoBattleInterface AutoBattle = BattleEngineViewModel.Instance.AutoBattleEngine;
 
-		// Flag that this is running under Tests
-		public bool UnitTestRunning;
+        // Flag that this is running under Tests
+        public bool UnitTestRunning;
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		public AutoBattlePage (bool UnitTest = false)
-		{
-			// Flag if running under tests for animation loop control
-			UnitTestRunning = UnitTest;
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public AutoBattlePage(bool UnitTest = false)
+        {
+            // Flag if running under tests for animation loop control
+            UnitTestRunning = UnitTest;
 
-			InitializeComponent ();
-		}
+            InitializeComponent();
+        }
 
-		/// <summary>
-		/// Defines what happens when the AutoBattleButton is clicked.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void AutobattleButton_Clicked(object sender, EventArgs e)
-		{
-			// Call into Auto Battle from here to do the Battle...
+        /// <summary>
+        /// Defines what happens when the AutoBattleButton is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void AutobattleButton_Clicked(object sender, EventArgs e)
+        {
+            // Call into Auto Battle from here to do the Battle...
 
-			// To See Level UP happening, a character needs to be close to the next level
-			var Character = new CharacterModel
-			{
-				ExperienceTotal = 300,    // Enough for next level
-				Name = "Mike Level Example",
-				Speed = 100,	// Go first
-			};
+            // To See Level UP happening, a character needs to be close to the next level
+            var Character = new CharacterModel
+            {
+                ExperienceTotal = 300,    // Enough for next level
+                Name = "Mike Level Example",
+                Speed = 100,    // Go first
+            };
 
-			var CharacterPlayer = new PlayerInfoModel(Character);
+            var CharacterPlayer = new PlayerInfoModel(Character);
 
-			// Turn on the Koenig version for now...
-			BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
+            // Turn on the Koenig version for now...
+            BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
 
-			BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
 
-			await BattleEngineViewModel.Instance.AutoBattleEngine.RunAutoBattle();
-			
-			var BattleMessage = string.Format("Done {0} Rounds", AutoBattle.Battle.EngineSettings.BattleScore.RoundCount);
+            await BattleEngineViewModel.Instance.AutoBattleEngine.RunAutoBattle();
 
-			BattleMessageValue.Text = BattleMessage;
+            var BattleMessage = string.Format("Done {0} Rounds", AutoBattle.Battle.EngineSettings.BattleScore.RoundCount);
 
-			AutobattleImage.Source = "troll6_d.gif";
-		}
+            BattleMessageValue.Text = BattleMessage;
 
-		#region AnimationExamples
-		/// <summary>
-		/// Animation for Dice
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public void RollDice_Clicked(object sender, EventArgs e)
-		{
-			DiceAnimationHandeler();
+            AutobattleImage.Source = "troll6_d.gif";
+        }
 
-			return;
-		}
+        #region AnimationExamples
+        /// <summary>
+        /// Animation for Dice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void RollDice_Clicked(object sender, EventArgs e)
+        {
+            //RollDice.ScaleTo(2, 2000, Easing.BounceOut);
+            //await RollDice.TranslateTo(100, 0, 1000, Easing.SpringOut);
+            //await RollDice.TranslateTo(100, 100, 1000, Easing.SpringIn);
 
-		/// <summary>
-		/// Example of Animation on Dice
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public async void RollDiceMove_Clicked(object sender, EventArgs e)
-		{
-			// Start Spinning the dice
+            //RollDice.ScaleTo(1, 2000);
+            //await RollDice.TranslateTo(0, 100, 1000);
+            //await RollDice.TranslateTo(0, 100, 1000);
 
-			ImageButton image = RollDiceMove;
-			uint duration = 150;
+            //RollDice.ScaleTo(.5, 2000);
+            //await RollDice.TranslateTo(0, 0, 1000);
+            //await RollDice.TranslateTo(50, 50, 1000);
 
-			var parentAnimation = new Animation();
+            //await RollDice.ScaleTo(1, 1000);
 
-			// Spin the Image, it will go forever because of the ()=>true at the end
-			var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
-			parentAnimation.Add(0, 1, rotateAnimation);
+            //RollDice.CancelAnimations();
 
-			/*
+            DiceAnimationHandeler(RollDice);
+
+            return;
+        }
+
+        /// <summary>
+        /// Example of Animation on Dice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void RollDiceMove_Clicked(object sender, EventArgs e)
+        {
+            // Start Spinning the dice
+
+            ImageButton image = RollDiceMove;
+            uint duration = 150;
+
+            var parentAnimation = new Animation();
+
+            // Spin the Image, it will go forever because of the ()=>true at the end
+            var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
+            parentAnimation.Add(0, 1, rotateAnimation);
+
+            /*
 			 * The commit animation if repeating, will hang the unit test harness, so need to set it to false for testing
 			 * The UT constructor allows it to be called and set the UT flag
 			 * 
-			 */ 
-			var repeat = true;
+			 */
+            var repeat = true;
 
-			if (UnitTestRunning)
+            if (UnitTestRunning)
             {
-				repeat = false;
+                repeat = false;
             }
 
-			parentAnimation.Commit(this, "SpinAnimation", 16, duration * 2, null, null, () => repeat);
+            parentAnimation.Commit(this, "SpinAnimation", 16, duration * 2, null, null, () => repeat);
 
-			var Boxwidth = DiceBox.Width;
-			var BoxHeight = DiceBox.Height;
+            var Boxwidth = DiceBox.Width;
+            var BoxHeight = DiceBox.Height;
 
-			await RollDiceMove.TranslateTo(0, 0, duration, Easing.CubicIn);
-			
-			await RollDiceMove.TranslateTo(0, BoxHeight,duration, Easing.SinIn);
+            await RollDiceMove.TranslateTo(0, 0, duration, Easing.CubicIn);
 
-			int bounceHeight = (int)BoxHeight / 2;
-			int bounceSize = (int)BoxHeight / 4;
-			int bounceWidth = (int)Boxwidth / 4;
+            await RollDiceMove.TranslateTo(0, BoxHeight, duration, Easing.SinIn);
 
-			for(var i=0; i< Boxwidth-bounceWidth; i +=bounceWidth)
+            int bounceHeight = (int)BoxHeight / 2;
+            int bounceSize = (int)BoxHeight / 4;
+            int bounceWidth = (int)Boxwidth / 4;
+
+            for (var i = 0; i < Boxwidth - bounceWidth; i += bounceWidth)
             {
-				await RollDiceMove.TranslateTo(i, BoxHeight, duration);
-				await RollDiceMove.TranslateTo(i+(bounceWidth/2), DiceBox.Height-bounceHeight, duration);
+                await RollDiceMove.TranslateTo(i, BoxHeight, duration);
+                await RollDiceMove.TranslateTo(i + (bounceWidth / 2), DiceBox.Height - bounceHeight, duration);
 
-				bounceHeight -= bounceSize;
-			}
+                bounceHeight -= bounceSize;
+            }
 
-			await RollDiceMove.TranslateTo(Boxwidth, BoxHeight, duration,Easing.CubicOut);
+            await RollDiceMove.TranslateTo(Boxwidth, BoxHeight, duration, Easing.CubicOut);
 
 
-			// Cancel the spin animation
-			this.AbortAnimation("SpinAnimation");
-			return;
-		}
+            // Cancel the spin animation
+            this.AbortAnimation("SpinAnimation");
 
-		/// <summary>
-		/// Dice Animation Handeler
-		/// </summary>
-		/// <returns></returns>
-		public bool DiceAnimationHandeler()
-		{
-			// Animate the Rolling of the Dice
-			ImageButton image = RollDice;
-			uint duration = 1000;
+            return;
+        }
 
-			var parentAnimation = new Animation();
+        /// <summary>
+        /// Dice Animation Handeler
+        /// </summary>
+        /// <returns></returns>
+        public bool DiceAnimationHandeler(ImageButton image)
+        {
+            // Animate the Rolling of the Dice
+            //ImageButton image = RollDice;
+            uint duration = 1000;
 
-			// Grow the image Size
-			var scaleUpAnimation = new Animation(v => image.Scale = v, 1, 2, Easing.SpringIn);
+            var parentAnimation = new Animation();
 
-			// Spin the Image
-			var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
+            // Grow the image Size
+            var scaleUpAnimation = new Animation(v => image.Scale = v, 1, 2, Easing.SpringIn);
 
-			// Shrink the Image
-			var scaleDownAnimation = new Animation(v => image.Scale = v, 2, 1, Easing.SpringOut);
+            // Spin the Image
+            var rotateAnimation = new Animation(v => image.Rotation = v, 0, 360);
 
-			parentAnimation.Add(0, 0.5, scaleUpAnimation);
-			parentAnimation.Add(0, 1, rotateAnimation);
-			parentAnimation.Add(0.5, 1, scaleDownAnimation);
+            // Shrink the Image
+            var scaleDownAnimation = new Animation(v => image.Scale = v, 2, 1, Easing.SpringOut);
 
-			parentAnimation.Commit(this, "ChildAnimations", 16, duration, null, null);
+            parentAnimation.Add(0, 0.5, scaleUpAnimation);
+            parentAnimation.Add(0, 1, rotateAnimation);
+            parentAnimation.Add(0.5, 1, scaleDownAnimation);
 
-			return true;
-		}
-		#endregion AnimationExamples
-	}
+            parentAnimation.Commit(this, "ChildAnimations", 16, duration, null, null);
+
+            return true;
+        }
+        #endregion AnimationExamples
+    }
 }
